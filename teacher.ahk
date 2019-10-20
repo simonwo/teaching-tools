@@ -42,7 +42,7 @@ TimerVert    := MonBottom - TimerHeight*2
 BuzzerFiles := ["Timer.mp3", "Timer.wav", Format("{1:s}\Media\chord.wav", A_WinDir)]
 
 ; Display welcome message
-MsgBox, 64, Teaching Tools, Teaching Tools is running! Press Win+? for help.,
+MsgBox, 64, Teaching Tools, Teaching Tools v2 is running! Press Win+? for help.,
 
 ; Win+O: Open a student file to randomly pick students from
 #o::

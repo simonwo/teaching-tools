@@ -1,9 +1,9 @@
 # Teaching Tools
 
 ## Installing
-1.	Go to the [https://www.autohotkey.com/download](AutoHotKey download page) and click “Download AutoHotkey installer”
+1.	Go to the [AutoHotKey download page](https://www.autohotkey.com/download) and click “Download AutoHotkey installer”
 2.	Double-click and follow the installation steps
-3.	Save the attachment from this e-mail somewhere handy and double-click on it.
+3.	Save the [`teacher.ahk`](./teacher.ahk) file somewhere handy and double-click on it.
     You should receive a message saying “Teaching Tools is running”.
 
 Once the tools are running they will stay running until you log off or restart your computer. Just double-click the file again in the future to run them again. There will also be an ‘H’ icon next to the taskbar clock which will let you close them.
