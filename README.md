@@ -20,5 +20,10 @@ You can press the following key combinations to activate the functions:
 *	Win+T: Reset and start a timer for the configured time
 *	Win+?: Display this help
 
+### Timer buzzer
+A sound will play to signal the end of the timer. By default, a built-in Windows sound will be used.
+
+You can specify your own sound by placing a file called `timer.wav` or `timer.mp3` in the same directory as the `teacher.ahk` file. Your custom sound will play when the timer ends.
+
 ## Sharing
 This is released under an [open-source license](./LICENSE), which gives anyone the power to share and modify the tools as they see fit, with no time limit.

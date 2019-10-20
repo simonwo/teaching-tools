@@ -36,6 +36,11 @@ TimerHeight  := 150 + 35 + 35
 TimerHoriz   := MonRight - TimerWidth*2
 TimerVert    := MonBottom - TimerHeight*2
 
+; Files to use as end of timer sound effect
+; The first file to be found to exist will be used
+; Put your custom files next to this script
+BuzzerFiles := ["Timer.mp3", "Timer.wav", Format("{1:s}\Media\chord.wav", A_WinDir)]
+
 ; Display welcome message
 MsgBox, 64, Teaching Tools, Teaching Tools is running! Press Win+? for help.,
 
@@ -88,6 +93,15 @@ Loop %NumLoops% {
   Sleep 50
 }
 Progress, Off
+FileCount := BuzzerFiles.MaxIndex() - BuzzerFiles.MinIndex()
+Loop %FileCount% {
+  File := BuzzerFiles[BuzzerFiles.MinIndex() + A_Index]
+  If FileExist(File)
+  {
+    Break
+  }
+}
+SoundPlay, %File%
 return
 
 ; Win+?: Help
