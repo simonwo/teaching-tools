@@ -31,6 +31,10 @@ Letters := ["A", "B", "C", "D", "E", "F", "G", "H"]
 
 ; Default timer time, change with Win+Y
 TimerSeconds := 10
+TimerWidth   := Width / 10
+TimerHeight  := 150 + 35 + 35
+TimerHoriz   := MonRight - TimerWidth*2
+TimerVert    := MonBottom - TimerHeight*2
 
 ; Display welcome message
 MsgBox, 64, Teaching Tools, Teaching Tools is running! Press Win+? for help.,
@@ -77,7 +81,7 @@ return
 ; Win+T: Start a timer for the specified time
 #t::
 NumLoops := TimerSeconds * 20
-Progress, P0 B W%Width% zh150 fs75, %TimerSeconds% second timer, , , Tahoma
+Progress, P0 M W%TimerWidth% zh150 fs35 X%TimerHoriz% Y%TimerVert%, %TimerSeconds% second timer, , %TimerSeconds% second timer, Tahoma
 Loop %NumLoops% {
   Percentage := (A_Index / NumLoops) * 100
   Progress, %Percentage%
