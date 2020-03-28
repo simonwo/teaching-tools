@@ -22,4 +22,4 @@ jobs:
         args: install autohotkey
 
     - name: Compile script
-      run: '&"$Env:ChocolateyInstall\AutoHotkey\Compiler\Ahk2Exe.exe" /in $GITHUB_WORKSPACE/teacher.ahk /out $GITHUB_WORKSPACE/teaching-tools.exe'
+      run: '& "C:\Program Files\AutoHotkey\Compiler\Ahk2Exe.exe" /in $GITHUB_WORKSPACE/teacher.ahk /out $GITHUB_WORKSPACE/teaching-tools.exe'
