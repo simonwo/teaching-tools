@@ -17,7 +17,7 @@ You can press the following key combinations to activate the functions:
 *	Win+K: Randomly select a number from 4-8
 *	Win+O: Open a class list. This is just a text file with one student name per line, use Notepad to create it (sorry, no help with accents yet!)
 *	Win+Y: Set the time for the timer, defaults to 10 seconds
-*	Win+T: Reset and start a timer for the configured time
+*	Win+T: Start a timer for the configured time, or pause the currently running timer
 *	Win+?: Display this help
 
 ### Timer buzzer

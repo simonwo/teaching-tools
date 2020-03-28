@@ -36,13 +36,17 @@ TimerHeight  := 150 + 35 + 35
 TimerHoriz   := MonRight - TimerWidth*2
 TimerVert    := MonBottom - TimerHeight*2
 
+; Whether or not the timer is running or paused
+TimerActive  := False
+TimerPaused  := False
+
 ; Files to use as end of timer sound effect
 ; The first file to be found to exist will be used
 ; Put your custom files next to this script
 BuzzerFiles := ["Timer.mp3", "Timer.wav", Format("{1:s}\Media\chord.wav", A_WinDir)]
 
 ; Display welcome message
-MsgBox, 64, Teaching Tools, Teaching Tools v2 is running! Press Win+? for help.,
+MsgBox, 64, Teaching Tools, Teaching Tools v3 is running! Press Win+? for help.,
 
 ; Win+O: Open a student file to randomly pick students from
 #o::
@@ -83,14 +87,24 @@ return
 InputBox, TimerSeconds, Timer, Specify the time for the timer in seconds:
 return
 
-; Win+T: Start a timer for the specified time
+; Win+T: Start a timer for the specified time or pause existing timer
+#MaxThreadsPerHotkey, 2 ; So that timers can be paused while running
 #t::
+If TimerActive {
+  TimerPaused := Not TimerPaused
+  return
+}
+
+TimerActive := True
+TimerPaused := False
 NumLoops := TimerSeconds * 20
 Progress, P0 M W%TimerWidth% zh150 fs35 X%TimerHoriz% Y%TimerVert%, %TimerSeconds% second timer, , %TimerSeconds% second timer, Tahoma
 Loop %NumLoops% {
   Percentage := (A_Index / NumLoops) * 100
   Progress, %Percentage%
-  Sleep 50
+  Loop {
+    Sleep 50
+  } Until Not TimerPaused
 }
 Progress, Off
 FileCount := BuzzerFiles.MaxIndex() - BuzzerFiles.MinIndex()
@@ -102,9 +116,10 @@ Loop %FileCount% {
   }
 }
 SoundPlay, %File%
+TimerActive := False
 return
 
 ; Win+?: Help
 #/::
-MsgBox, 64, Teaching Tools, Win+O: Open a student file`nWin+H: Randomly pick a letter`nWin+J: Randomly pick a student`nWin+K: Randomly pick a number`nWin+Y: Set timer`nWin+T: Reset and run timer
+MsgBox, 64, Teaching Tools, Win+O: Open a student file`nWin+H: Randomly pick a letter`nWin+J: Randomly pick a student`nWin+K: Randomly pick a number`nWin+Y: Set timer`nWin+T: Run or pause timer
 return
