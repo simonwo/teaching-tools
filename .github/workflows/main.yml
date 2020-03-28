@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v2
       
     - name: Install AutoHotkey
-      uses: crazy-max/ghaction-chocoloatey@v1
+      uses: crazy-max/ghaction-chocolatey@v1
       with:
         args: install autohotkey
 
