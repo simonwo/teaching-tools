@@ -1,0 +1,25 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Release
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Install AutoHotkey
+      uses: crazy-max/ghaction-chocoloatey@v1
+      with:
+        args: install autohotkey
+
+    - name: Compile script
+      run:
+        &"$Env:ChocolateyInstall\AutoHotkey\Compiler\Ahk2Exe.exe" /in $GITHUB_WORKSPACE/teacher.ahk /out $GITHUB_WORKSPACE/teaching-tools.exe
